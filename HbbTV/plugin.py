@@ -11,7 +11,7 @@ from Components.Language import language
 from Components.ServiceEventTracker import ServiceEventTracker
 from Components.VolumeControl import VolumeControl
 from Tools.Directories import fileExists
-from boxbranding import getMachineBuild
+from Components.SystemInfo import BoxInfo
 
 from enigma import eTimer, iServiceInformation, iPlayableService
 
@@ -100,7 +100,7 @@ class VBHandler(VBHandlers):
 					if x in self.onCloseCB:
 						self.onCloseCB.remove(x)
 		#print "============== self.videobackend_activate: ", self.videobackend_activate, "   =============="
-		if getMachineBuild() in ('dags7252'):
+		if BoxInfo.getItem("machine") in ('galaxy4k', 'lunix3-4k', 'revo4k'):
 			if self.videobackend_activate is False:
 				self._session.nav.stopService()
 				if vbcfg.g_service is not None:
